@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Deskcraft Store</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">DC</span>
+        <span class="brand-name">Deskcraft</span>
+      </div>
+      <span class="checkout-badge">Secure Checkout</span>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="checkout-grid">
+      <!-- Left Column: Storefront + Customer Details -->
+      <div class="main-col">
+        <section class="section" aria-labelledby="catalog-heading">
+          <div class="section-head">
+            <h1 id="catalog-heading">Select Items</h1>
+            <p class="section-sub">All prices include GST. Free shipping across India.</p>
+          </div>
+          <ul id="product-list" class="product-list"></ul>
+        </section>
+
+        <section class="section" aria-labelledby="customer-heading">
+          <div class="section-head">
+            <h2 id="customer-heading">Customer Details</h2>
+          </div>
+
+          <form id="checkout-form" novalidate>
+            <div class="field">
+              <label for="customer-name">
+                Full Name <span class="req" aria-hidden="true">*</span>
+              </label>
+              <input
+                id="customer-name"
+                name="customerName"
+                type="text"
+                autocomplete="name"
+                placeholder="Enter your full name"
+                aria-required="true"
+              />
+            </div>
+
+            <div
+              id="validation-error"
+              class="notice notice-error hidden"
+              role="alert"
+              aria-live="assertive"
+            ></div>
+
+            <button id="place-order-btn" type="submit" class="btn-checkout">
+              Place Order
+            </button>
+          </form>
+
+          <section
+            id="order-confirmation"
+            class="receipt hidden"
+            role="status"
+            aria-live="polite"
+            aria-labelledby="confirmation-heading"
+            data-testid="order-confirmation"
+          >
+            <div class="receipt-head">
+              <span class="check-icon" aria-hidden="true">✓</span>
+              <div>
+                <h3 id="confirmation-heading">Order Confirmed</h3>
+                <p class="receipt-sub">Thank you for your purchase. Your order is being prepared.</p>
+              </div>
+            </div>
+            <dl class="receipt-details">
+              <div>
+                <dt>Reference</dt>
+                <dd id="confirmation-ref" class="mono" data-testid="order-reference"></dd>
+              </div>
+              <div>
+                <dt>Customer</dt>
+                <dd id="confirmation-name"></dd>
+              </div>
+              <div>
+                <dt>Total Paid</dt>
+                <dd id="confirmation-total" class="nums strong"></dd>
+              </div>
+            </dl>
+          </section>
+        </section>
+      </div>
+
+      <!-- Right Column: Order Summary / Cart -->
+      <aside class="summary-col" aria-labelledby="cart-heading">
+        <div class="summary-header">
+          <h2 id="cart-heading">Order Summary</h2>
+          <span id="cart-count" class="item-count">0 items</span>
+        </div>
+
+        <div id="cart-empty-state" class="empty-cart">
+          <p>Your bag is empty.</p>
+          <span>Add an item from the list to begin checkout.</span>
+        </div>
+
+        <ul id="cart-list" class="cart-list hidden" aria-label="Shopping cart"></ul>
+
+        <div class="summary-totals">
+          <div class="summary-line muted">
+            <span>Shipping</span>
+            <span>Free</span>
+          </div>
+          <div class="summary-line grand-total">
+            <span>Total</span>
+            <strong id="order-total" class="nums" data-testid="order-total">₹0.00</strong>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
